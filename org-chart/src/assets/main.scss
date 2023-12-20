@@ -1,0 +1,158 @@
+@import 'colours';
+@import 'base';
+@import 'partials';
+@import 'mobile';
+
+html {
+  color: $on-surface;
+  background: $surface;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-weight: normal;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  header {
+    width: 100%;
+    height: auto;
+    padding-bottom: 50px;
+
+    p {
+      padding: 15px 0 25px 0;
+    }
+
+    small {
+      margin-right: 10px;
+      &.department {
+        @extend %department-badges;
+      }
+      &.prog-language {
+        @extend %language-badges;
+        font-size: 90%;
+      }
+    }
+  }
+
+  main {
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+
+    .org-node {
+      display: flex;
+      position: relative;
+      flex-direction: column;
+
+      > * {
+        line-height: 20px;
+      }
+
+      button.org-node-go-up {
+        display: flex;
+        width: 30px;
+        height: 30px;
+        padding: 0;
+        align-self: center;
+        place-items: center;
+        justify-content: center;
+        color: $on-tertiary;
+        background: $tertiary;
+        border: none;
+        outline: none;
+        border-radius: 15px;
+        margin-bottom: -3px;
+        cursor: pointer;
+
+        &[disabled] {
+          pointer-events: none;
+          svg {
+            display: none;
+          }
+        }
+      }
+
+      .org-node-content {
+        display: flex;
+        position: relative;
+        width: 250px;
+        margin: 25px;
+        padding: 20px 25px;
+        border-radius: 25px;
+        background-color: $tertiary;
+        color: $on-tertiary;
+        flex-direction: column;
+        cursor: pointer;
+        align-self: center;
+        min-height: 67px;
+
+        &.pointer-none {
+          pointer-events: none;
+          cursor: text;
+        }
+
+        &:before {
+          @extend %chart-lines;
+          top: -25px;
+        }
+
+        &.has-children:after {
+          @extend %chart-lines;
+          bottom: -27px;
+        }
+
+        .org-node-content-department {
+          display: inline-flex;
+          width: 100%;
+          margin-bottom: 5px;
+
+          small {
+            @extend %department-badges;
+          }
+        }
+
+        .org-node-content-lang {
+          display: inline-flex;
+          width: 100%;
+          margin-top: 7px;
+
+          small {
+            @extend %language-badges;
+          }
+        }
+      }
+
+      .org-children {
+        display: flex;
+        position: relative;
+
+        &:before {
+          @extend %chart-lines;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 50%;
+          height: 4px;
+          margin-left: 0px;
+        }
+      }
+    }
+
+    .fade-enter-active {
+      transition: opacity 0.5s ease;
+    }
+    .fade-leave-active {
+      transition: none;
+    }
+    .fade-enter-from,
+    .fade-leave-to {
+      opacity: 0;
+    }
+  } // end main
+} // end #app

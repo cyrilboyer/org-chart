@@ -1,0 +1,27 @@
+%chart-lines {
+  pointer-events: none;
+  content: '';
+  position: absolute;
+  background-color: $tertiary;
+  left: 50%;
+  width: 4px;
+  height: 30px;
+  margin-left: -2px;
+  border-radius: 2px;
+}
+
+%department-badges {
+  font-size: 90%;
+  border-radius: 5px;
+  padding: 3px 5px;
+  background-color: $primary;
+  color: $on-primary;
+}
+
+%language-badges {
+  font-size: 65%;
+  border-radius: 5px;
+  padding: 3px 5px;
+  background-color: $secondary;
+  color: $on-secondary;
+}
